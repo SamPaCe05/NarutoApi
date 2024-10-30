@@ -1,4 +1,6 @@
 
+import PropTypes from 'prop-types'
+
 export default function CardsAll({ name, image, id }) {
     return (
         <article className="border bg-slate-300 rounded-lg" key={id * -1}>
@@ -11,3 +13,8 @@ export default function CardsAll({ name, image, id }) {
         </article>
     )
 }
+CardsAll.propTypes = {
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
+};

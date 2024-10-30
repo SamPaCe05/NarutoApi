@@ -1,10 +1,8 @@
-import {  Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { useEffect, useState } from "react"
-import { db } from '../firebase/firebaseConfig'
-import { collection, getDocs } from "firebase/firestore"
 
 
 import {
@@ -14,6 +12,8 @@ import {
 } from "@/components/ui/sheet"
 
 import { Heart } from "lucide-react"
+import { db } from '../firebase/firebaseConfig'
+import { collection, getDocs } from "firebase/firestore"
 export default function Layout() {
   const [favs, setFavs] = useState(null)
 
@@ -27,7 +27,8 @@ export default function Layout() {
         id: doc.id,
         characterId: doc.data().characterId,
         img: doc.data().image,
-        name: doc.data().name
+        name: doc.data().name,
+        birthdate: doc.data().birthdate
       }));
 
       return favorites;
@@ -62,8 +63,12 @@ export default function Layout() {
                     <button onClick={() => handleOpenDetails(`/details/${fav.characterId}`)} className="flex justify-center items-center mt-1 gap-2">
                       <img src={fav.img} className="w-12 h-12 rounded-full" alt="personaje" />
                       <h5 className="text-white font-black">{fav.name}</h5>
+                      <h5 className="text-white font-black">{fav.birthdate}</h5>
+
                     </button>
+                    
                     <Separator></Separator>
+
                   </div>
                 ))
               }

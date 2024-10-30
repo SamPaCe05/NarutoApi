@@ -20,7 +20,8 @@ export default function Character({ id, name, image, debut, birthdate, kekkeiGen
     const personaje = {
         characterId: id,
         image: image[0],
-        name: name
+        name: name,
+        birthdate: birthdate
     };
 
     async function addChar(character) {
